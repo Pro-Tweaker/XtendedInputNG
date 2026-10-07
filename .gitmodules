@@ -1,0 +1,10 @@
+[submodule "third_party/mINI"]
+	path = third_party/mINI
+	url = https://github.com/Pro-Tweaker/mINI
+[submodule "third_party/injector"]
+	path = third_party/injector
+	url = https://github.com/Pro-Tweaker/injector
+[submodule "third_party/SDL"]
+	path = third_party/SDL
+	url = https://github.com/libsdl-org/SDL
+	shallow = true

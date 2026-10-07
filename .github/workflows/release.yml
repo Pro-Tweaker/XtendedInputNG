@@ -1,0 +1,71 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build ${{ matrix.game }}
+    runs-on: windows-2022
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { game: MW,        tpk: w2 }
+          - { game: Carbon,    tpk: w }
+          - { game: ProStreet, tpk: w }
+          - { game: UC,        tpk: none }
+          - { game: World,     tpk: none }
+          - { game: UG,        tpk: none }
+          - { game: UG2,       tpk: none }
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          submodules: recursive
+
+      - uses: microsoft/setup-msbuild@v3
+
+      - name: Build
+        run: msbuild build/XtendedInputNG.vcxproj -p:Configuration=Release-${{ matrix.game }} -p:Platform=Win32 -v:m -nologo
+
+      - name: Package
+        shell: pwsh
+        run: build\scripts\package.ps1 Release ${{ matrix.game }} ${{ matrix.tpk }}
+
+      - name: Zip
+        shell: pwsh
+        run: |
+          $name = "XtendedInputNG-${{ matrix.game }}-${{ github.ref_type == 'tag' && github.ref_name || github.sha }}"
+          Compress-Archive -Path "dist/Release-${{ matrix.game }}/*" -DestinationPath "$name.zip"
+          "ZIP_NAME=$name.zip" >> $env:GITHUB_ENV
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: ${{ matrix.game }}
+          path: ${{ env.ZIP_NAME }}
+          if-no-files-found: error
+
+  release:
+    name: Publish release
+    needs: build
+    if: github.ref_type == 'tag'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          path: artifacts
+          merge-multiple: true
+
+      - uses: softprops/action-gh-release@v3
+        with:
+          files: artifacts/*.zip
+          generate_release_notes: true
+          prerelease: ${{ contains(github.ref_name, '-') }}

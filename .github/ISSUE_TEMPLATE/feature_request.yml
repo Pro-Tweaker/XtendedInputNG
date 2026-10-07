@@ -1,0 +1,20 @@
+name: Feature request
+description: Suggest an improvement
+labels: [enhancement]
+body:
+  - type: dropdown
+    id: game
+    attributes:
+      label: Game(s)
+      multiple: true
+      options: [Underground, Underground 2, Most Wanted, Carbon, Pro Street, Undercover, World, All]
+  - type: textarea
+    id: what
+    attributes:
+      label: What would you like?
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why is it useful?

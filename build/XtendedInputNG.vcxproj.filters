@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="fe">
+      <UniqueIdentifier>{daecfbf7-f074-55cd-a06f-6aa20f342ed0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game">
+      <UniqueIdentifier>{035e169a-ded2-5ce8-b1b6-dee85651f8ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="input">
+      <UniqueIdentifier>{d3a839f2-9f23-57e7-b831-61f211aefd9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="pch">
+      <UniqueIdentifier>{d79fa5b9-174f-5cb5-9e64-b13d0fb6b232}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="plugin">
+      <UniqueIdentifier>{0a4b147f-590f-5923-b53e-d2c8382b9739}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="build">
+      <UniqueIdentifier>{fa09a9ca-3675-5fe5-8d32-74cd39a343f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data">
+      <UniqueIdentifier>{ae078bb2-c018-5b0d-a2d9-0ebbe98fb16b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\fe\Buttons.h">
+      <Filter>fe</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\fe\FEHooks.h">
+      <Filter>fe</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\fe\FEng.h">
+      <Filter>fe</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\ActionID.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\Definitions.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\input\AdaptiveTriggers.h">
+      <Filter>input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\input\ChaseCamera.h">
+      <Filter>input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\input\Controller.h">
+      <Filter>input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\input\DebugCamera.h">
+      <Filter>input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\input\GamepadBackend.h">
+      <Filter>input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\input\InputDevice.h">
+      <Filter>input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\input\InputMapping.h">
+      <Filter>input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\input\Mapping.h">
+      <Filter>input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\input\Rumble.h">
+      <Filter>input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\input\TriggerEffects.h">
+      <Filter>input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\input\VKHash.h">
+      <Filter>input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\input\XInputConfig.h">
+      <Filter>input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\pch\macros.h">
+      <Filter>pch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\pch\stdafx.h">
+      <Filter>pch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\plugin\Config.h">
+      <Filter>plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\plugin\Init.h">
+      <Filter>plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\plugin\Log.h">
+      <Filter>plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\plugin\PatternScan.h">
+      <Filter>plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\plugin\Plugin.h">
+      <Filter>plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\plugin\Util.h">
+      <Filter>plugin</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\dllmain.cpp">
+    </ClCompile>
+    <ClCompile Include="..\src\fe\Buttons.cpp">
+      <Filter>fe</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\fe\FEHooks.cpp">
+      <Filter>fe</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\fe\FEng.cpp">
+      <Filter>fe</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\ActionID.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\Definitions.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\input\AdaptiveTriggers.cpp">
+      <Filter>input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\input\ChaseCamera.cpp">
+      <Filter>input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\input\Controller.cpp">
+      <Filter>input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\input\DebugCamera.cpp">
+      <Filter>input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\input\GamepadBackend.cpp">
+      <Filter>input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\input\InputDevice.cpp">
+      <Filter>input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\input\InputMapping.cpp">
+      <Filter>input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\input\Mapping.cpp">
+      <Filter>input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\input\Rumble.cpp">
+      <Filter>input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\input\SDLBackend.cpp">
+      <Filter>input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\input\TriggerEffects.cpp">
+      <Filter>input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\input\VKHash.cpp">
+      <Filter>input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\input\XInputConfig.cpp">
+      <Filter>input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pch\stdafx.cpp">
+      <Filter>pch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\plugin\Config.cpp">
+      <Filter>plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\plugin\Exports.cpp">
+      <Filter>plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\plugin\Init.cpp">
+      <Filter>plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\plugin\Log.cpp">
+      <Filter>plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\plugin\PatternScan.cpp">
+      <Filter>plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\plugin\Plugin.cpp">
+      <Filter>plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\plugin\Util.cpp">
+      <Filter>plugin</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="scripts\package.bat">
+      <Filter>build</Filter>
+    </None>
+    <None Include="XtendedInputNG.props">
+      <Filter>build</Filter>
+    </None>
+    <None Include="XtendedInputNG.licenseheader">
+      <Filter>build</Filter>
+    </None>
+    <None Include="..\data\Config-Carbon\XtendedInputNG.default.ini">
+      <Filter>data</Filter>
+    </None>
+    <None Include="..\data\Config-Carbon\XtendedInputNG.ini">
+      <Filter>data</Filter>
+    </None>
+    <None Include="..\data\Config-MW\XtendedInputNG.default.ini">
+      <Filter>data</Filter>
+    </None>
+    <None Include="..\data\Config-MW\XtendedInputNG.ini">
+      <Filter>data</Filter>
+    </None>
+    <None Include="..\data\Config-ProStreet\XtendedInputNG.default.ini">
+      <Filter>data</Filter>
+    </None>
+    <None Include="..\data\Config-ProStreet\XtendedInputNG.ini">
+      <Filter>data</Filter>
+    </None>
+    <None Include="..\data\Config-UC\XtendedInputNG.default.ini">
+      <Filter>data</Filter>
+    </None>
+    <None Include="..\data\Config-UC\XtendedInputNG.ini">
+      <Filter>data</Filter>
+    </None>
+    <None Include="..\data\Config-World\XtendedInputNG.default.ini">
+      <Filter>data</Filter>
+    </None>
+    <None Include="..\data\Config-World\XtendedInputNG.ini">
+      <Filter>data</Filter>
+    </None>
+  </ItemGroup>
+</Project>

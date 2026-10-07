@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Shared settings for every configuration. The per-configuration traits ($(BuildType), $(Game), ...)
+  are derived from the configuration name in XtendedInputNG.vcxproj, so adding a game or a build flavour only
+  touches that one place.
+-->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <OutDir>$(MSBuildThisFileDirectory)..\bin\$(Configuration)\</OutDir>
+    <IntDir>$(MSBuildThisFileDirectory)..\obj\$(Configuration)\</IntDir>
+    <TargetExt>.asi</TargetExt>
+    <TargetName>$(ProjectName)</TargetName>
+    <LinkIncremental Condition="'$(BuildType)'=='Debug'">true</LinkIncremental>
+    <LinkIncremental Condition="'$(BuildType)'=='Release'">false</LinkIncremental>
+  </PropertyGroup>
+
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;$(GameDefine);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)..\third_party;$(MSBuildThisFileDirectory)..\third_party\injector\include;$(MSBuildThisFileDirectory)..\third_party\SDL\include;$(MSBuildThisFileDirectory)..\src\pch;$(MSBuildThisFileDirectory)..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>Default</LanguageStandard_C>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <PostBuildEvent>
+      <Message>Making final build package...</Message>
+      <Command>powershell -NoProfile -ExecutionPolicy Bypass -File "$(MSBuildThisFileDirectory)scripts\package.ps1" $(BuildType) $(Game) $(TpkMode)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+
+  <!-- build type -->
+  <ItemDefinitionGroup Condition="'$(BuildType)'=='Debug'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(BuildType)'=='Release'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+</Project>

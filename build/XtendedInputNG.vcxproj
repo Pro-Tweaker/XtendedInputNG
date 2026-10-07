@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--
+    One project, 14 configurations: <Debug|Release>-<MW|Carbon|ProStreet|UC|World|UG|UG2>
+    Everything that varies between them is derived from the configuration name below;
+    the settings themselves live in XtendedInputNG.props.
+  -->
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug-Carbon|Win32">
+      <Configuration>Debug-Carbon</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug-MW|Win32">
+      <Configuration>Debug-MW</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug-ProStreet|Win32">
+      <Configuration>Debug-ProStreet</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug-UC|Win32">
+      <Configuration>Debug-UC</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug-World|Win32">
+      <Configuration>Debug-World</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug-UG|Win32">
+      <Configuration>Debug-UG</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug-UG2|Win32">
+      <Configuration>Debug-UG2</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release-Carbon|Win32">
+      <Configuration>Release-Carbon</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release-MW|Win32">
+      <Configuration>Release-MW</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release-ProStreet|Win32">
+      <Configuration>Release-ProStreet</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release-UC|Win32">
+      <Configuration>Release-UC</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release-World|Win32">
+      <Configuration>Release-World</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release-UG|Win32">
+      <Configuration>Release-UG</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release-UG2|Win32">
+      <Configuration>Release-UG2</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{3C558AD9-5F9C-4A14-8F07-800F46C132C7}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>XtendedInputNG</RootNamespace>
+    <ProjectName>XtendedInputNG</ProjectName>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+
+  <!-- Traits derived from the configuration name -->
+  <PropertyGroup Label="ConfigurationTraits">
+    <BuildType Condition="$(Configuration.StartsWith('Debug'))">Debug</BuildType>
+    <BuildType Condition="$(Configuration.StartsWith('Release'))">Release</BuildType>
+    <Game Condition="$(Configuration.Contains('-MW'))">MW</Game>
+    <Game Condition="$(Configuration.Contains('-Carbon'))">Carbon</Game>
+    <Game Condition="$(Configuration.Contains('-ProStreet'))">ProStreet</Game>
+    <Game Condition="$(Configuration.Contains('-UC'))">UC</Game>
+    <Game Condition="$(Configuration.Contains('-World'))">World</Game>
+    <Game Condition="$(Configuration.EndsWith('-UG'))">UG</Game>
+    <Game Condition="$(Configuration.EndsWith('-UG2'))">UG2</Game>
+    <GameDefine>GAME_$(Game.ToUpper())</GameDefine>
+    <!-- button texture TPK: none, or the XNFSTPKTool write mode -->
+    <TpkMode>none</TpkMode>
+    <TpkMode Condition="'$(Game)'=='MW'">w2</TpkMode>
+    <TpkMode Condition="'$(Game)'=='Carbon' Or '$(Game)'=='ProStreet'">w</TpkMode>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries Condition="'$(BuildType)'=='Debug'">true</UseDebugLibraries>
+    <UseDebugLibraries Condition="'$(BuildType)'=='Release'">false</UseDebugLibraries>
+    <WholeProgramOptimization Condition="'$(BuildType)'=='Release'">true</WholeProgramOptimization>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="XtendedInputNG.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+
+  <ItemGroup>
+    <ClInclude Include="..\src\fe\Buttons.h" />
+    <ClInclude Include="..\src\fe\FEHooks.h" />
+    <ClInclude Include="..\src\fe\FEng.h" />
+    <ClInclude Include="..\src\game\ActionID.h" />
+    <ClInclude Include="..\src\game\Definitions.h" />
+    <ClInclude Include="..\src\input\AdaptiveTriggers.h" />
+    <ClInclude Include="..\src\input\ChaseCamera.h" />
+    <ClInclude Include="..\src\input\Controller.h" />
+    <ClInclude Include="..\src\input\DebugCamera.h" />
+    <ClInclude Include="..\src\input\GamepadBackend.h" />
+    <ClInclude Include="..\src\input\InputDevice.h" />
+    <ClInclude Include="..\src\input\InputMapping.h" />
+    <ClInclude Include="..\src\input\Mapping.h" />
+    <ClInclude Include="..\src\input\Rumble.h" />
+    <ClInclude Include="..\src\input\TriggerEffects.h" />
+    <ClInclude Include="..\src\input\VKHash.h" />
+    <ClInclude Include="..\src\input\XInputConfig.h" />
+    <ClInclude Include="..\src\pch\macros.h" />
+    <ClInclude Include="..\src\pch\stdafx.h" />
+    <ClInclude Include="..\src\plugin\Config.h" />
+    <ClInclude Include="..\src\plugin\Init.h" />
+    <ClInclude Include="..\src\plugin\Log.h" />
+    <ClInclude Include="..\src\plugin\PatternScan.h" />
+    <ClInclude Include="..\src\plugin\Plugin.h" />
+    <ClInclude Include="..\src\plugin\Util.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\dllmain.cpp" />
+    <ClCompile Include="..\src\fe\Buttons.cpp" />
+    <ClCompile Include="..\src\fe\FEHooks.cpp" />
+    <ClCompile Include="..\src\fe\FEng.cpp" />
+    <ClCompile Include="..\src\game\ActionID.cpp" />
+    <ClCompile Include="..\src\game\Definitions.cpp" />
+    <ClCompile Include="..\src\input\AdaptiveTriggers.cpp" />
+    <ClCompile Include="..\src\input\ChaseCamera.cpp" />
+    <ClCompile Include="..\src\input\Controller.cpp" />
+    <ClCompile Include="..\src\input\DebugCamera.cpp" />
+    <ClCompile Include="..\src\input\GamepadBackend.cpp" />
+    <ClCompile Include="..\src\input\InputDevice.cpp" />
+    <ClCompile Include="..\src\input\InputMapping.cpp" />
+    <ClCompile Include="..\src\input\Mapping.cpp" />
+    <ClCompile Include="..\src\input\Rumble.cpp" />
+    <ClCompile Include="..\src\input\SDLBackend.cpp" />
+    <ClCompile Include="..\src\input\TriggerEffects.cpp" />
+    <ClCompile Include="..\src\input\VKHash.cpp" />
+    <ClCompile Include="..\src\input\XInputConfig.cpp" />
+    <ClCompile Include="..\src\pch\stdafx.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\src\plugin\Config.cpp" />
+    <ClCompile Include="..\src\plugin\Exports.cpp" />
+    <ClCompile Include="..\src\plugin\Init.cpp" />
+    <ClCompile Include="..\src\plugin\Log.cpp" />
+    <ClCompile Include="..\src\plugin\PatternScan.cpp" />
+    <ClCompile Include="..\src\plugin\Plugin.cpp" />
+    <ClCompile Include="..\src\plugin\Util.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\data\Config-Carbon\XtendedInputNG.default.ini" />
+    <None Include="..\data\Config-Carbon\XtendedInputNG.ini" />
+    <None Include="..\data\Config-MW\XtendedInputNG.default.ini" />
+    <None Include="..\data\Config-MW\XtendedInputNG.ini" />
+    <None Include="..\data\Config-ProStreet\XtendedInputNG.default.ini" />
+    <None Include="..\data\Config-ProStreet\XtendedInputNG.ini" />
+    <None Include="..\data\Config-UC\XtendedInputNG.default.ini" />
+    <None Include="..\data\Config-UC\XtendedInputNG.ini" />
+    <None Include="..\data\Config-World\XtendedInputNG.default.ini" />
+    <None Include="..\data\Config-World\XtendedInputNG.ini" />
+    <None Include="..\data\Config-UG\XtendedInputNG.default.ini" />
+    <None Include="..\data\Config-UG\XtendedInputNG.ini" />
+    <None Include="..\data\Config-UG2\XtendedInputNG.default.ini" />
+    <None Include="..\data\Config-UG2\XtendedInputNG.ini" />
+    <None Include="scripts\build-all.ps1" />
+    <None Include="scripts\fetch-xnfstpktool.ps1" />
+    <None Include="scripts\fetch-sdl3.ps1" />
+    <None Include="scripts\gen-tpk-ini.ps1" />
+    <None Include="scripts\package.ps1" />
+    <None Include="XtendedInputNG.props" />
+    <None Include="XtendedInputNG.licenseheader" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
